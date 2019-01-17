@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Tic_tac_toe_game.model;
 
 namespace Tic_tac_toe_game
 {

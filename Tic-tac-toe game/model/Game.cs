@@ -5,10 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace Tic_tac_toe_game
+namespace Tic_tac_toe_game.model
 {
     static class Game
     {
+        /*public static Field field = new Field();*/
         public static int[,] Field = new int[3, 3];        //0 - пусто, 1-крестик, 3-нолик
         public static bool First;                          // true - человек
         public static bool isStarted;
