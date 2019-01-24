@@ -39,6 +39,8 @@ namespace Tic_tac_toe_game.model
             }
         }
 
+        public void clearField() => cells.ForEach(c => c.type = Cell.Type.Empty);
+
         List<Cell> getHorizontal(int index) => new List<Cell> { this[new Point(0,index)], this[new Point(1, index)], this[new Point(2, index)]};
         List<Cell> getVertical(int index) => new List<Cell> { this[new Point(index,0)], this[new Point(index,1)], this[new Point(index,2)]};
         List<Cell> getMainDiagonal() => new List<Cell> { this[new Point(0, 0)], this[new Point(1, 1)], this[new Point(2, 2)]};

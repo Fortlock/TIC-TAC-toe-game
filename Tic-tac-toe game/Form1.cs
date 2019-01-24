@@ -23,7 +23,7 @@ namespace Tic_tac_toe_game
         {
                 int nx = x / 101,
                     ny = y / 101;
-                if (Game.Field[nx, ny] == 0 || Game.First!=type)
+                if (Game1.Field[nx, ny] == 0 || Game1.First!=type)
                 {
                     MessageField.Text = String.Empty;
                     if (nx < 3 && nx >= 0 && ny < 3 && ny >= 0)
@@ -41,7 +41,7 @@ namespace Tic_tac_toe_game
                                            100 * ny + 5,
                                            100 * nx + 5,
                                            100 * (ny + 1) - 5);
-                            Game.Field[nx, ny] = 1;
+                            Game1.Field[nx, ny] = 1;
                         }
                         else                                                    //Рисуем нолик
                         {
@@ -50,7 +50,7 @@ namespace Tic_tac_toe_game
                                               100 * ny + 5,
                                               90,
                                               90);
-                            Game.Field[nx, ny] = 3;
+                            Game1.Field[nx, ny] = 3;
                         }
                    
                     }
@@ -65,10 +65,10 @@ namespace Tic_tac_toe_game
 
         public void ShowCompSteps()
         {
-            int check = Game.First ? 3 : 1;
+            int check = Game1.First ? 3 : 1;
             for (int i = 0; i < 3; i++)
                 for (int j = 0; j < 3; j++)
-                    if (Game.Field[i, j] == check) DrawInCell(i * 101, j * 101, !Game.First);
+                    if (Game1.Field[i, j] == check) DrawInCell(i * 101, j * 101, !Game1.First);
         }
 
         public void ShowWinner(bool Winner)
@@ -77,7 +77,7 @@ namespace Tic_tac_toe_game
                 ShowCompSteps();
             Graphics GF = GameField.CreateGraphics();
             Pen p = new Pen(Color.DarkGreen, 2);
-            switch (Game.WinLine)
+            switch (Game1.WinLine)
             {
                 case 1: GF.DrawLine(p, 2, 50, 298, 50); break;
                 case 2: GF.DrawLine(p, 2, 150, 298, 150); break;
@@ -94,7 +94,7 @@ namespace Tic_tac_toe_game
 
         private void TicTacToe_Load(object sender, EventArgs e)
         {
-            Game.NewGame(ChFirst);
+            Game1.NewGame(ChFirst);
         }
 
         private void GameField_Paint(object sender, PaintEventArgs e)   //Рисуем поле для игры.
@@ -107,18 +107,18 @@ namespace Tic_tac_toe_game
             GF.DrawLine(p1, 202, 0, 202, 302);
             GF.DrawLine(p1, 0, 101, 302, 101);
             GF.DrawLine(p1, 0, 202, 302, 202);
-            if (!Game.First) { Game.Step(); ShowCompSteps(); }
+            if (!Game1.First) { Game1.Step(); ShowCompSteps(); }
         }
 
         private void GameField_MouseClick(object sender, MouseEventArgs e)
         {
             bool st=false;
-            if (Game.isStarted)
-                st = DrawInCell(e.X, e.Y, Game.First);
-            if (Game.isStarted && st)
-                Game.Step();
-            if (Game.isStarted && st) ShowCompSteps();
-            if (!Game.isStarted) ShowWinner(Game.Winner);
+            if (Game1.isStarted)
+                st = DrawInCell(e.X, e.Y, Game1.First);
+            if (Game1.isStarted && st)
+                Game1.Step();
+            if (Game1.isStarted && st) ShowCompSteps();
+            if (!Game1.isStarted) ShowWinner(Game1.Winner);
             
         }
 
@@ -134,7 +134,7 @@ namespace Tic_tac_toe_game
 
         private void NGame_Click(object sender, EventArgs e)
         {
-            Game.NewGame(ChFirst);
+            Game1.NewGame(ChFirst);
             MessageField.Text = String.Empty;
             GameField.Invalidate();
 

@@ -11,5 +11,12 @@ namespace Tic_tac_toe_game.model
         readonly Point point;
         public Type type = Type.Empty;
         public Cell(Point p) => point = p;
+        public bool IsEmpty
+        {
+            get
+            {
+                return type == Type.Empty;
+            }
+        } 
     }
 }
